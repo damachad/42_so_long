@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:19:49 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/11 14:21:30 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:27:10 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,15 +68,24 @@ typedef struct s_game
 	t_map			*map;	
 	t_point			curr;
 	t_point			next;
-	t_img			img;
-	t_sprite		*sp;
+	t_img			display;
+	t_sprite		*sprites;
 	unsigned int	collect;
 	unsigned int	moves;
 }					t_game;
 
-int		map_lines(char *mapfile);
+int		nr_lines(t_game *game, char *mapfile);
 void	map_print(t_map *map);
 void	load_map(t_game *game, char *mapfile);
 t_map	*new_map(unsigned int columns, unsigned int rows);
+
+void	destroy_game(t_game *game);
+void	free_matrix(char **bytes);
+void	destroy_map(t_map *map);
+void	error_msg(t_game *game, char *msg);
+
+bool	is_rectangle(t_map *map);
+bool	is_bordered(t_map *map);
+void	validate_map(t_game *game);
 
 #endif
