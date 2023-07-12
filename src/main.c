@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:26:28 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/11 15:05:27 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:24:32 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int main(int argc, char **argv)
 	{
 		ft_bzero(&game, sizeof(t_game));
 		load_map(&game, argv[1]);
+		validate_map(&game);
 	}
 	return (0);
 }

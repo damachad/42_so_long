@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/11 15:01:22 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:30:42 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_map	*new_map(unsigned int columns, unsigned int rows)
 	return (map);
 }
 
-int	map_lines(char *mapfile)
+int	nr_lines(t_game *game, char *mapfile)
 {
 	int		fd;
 	int		lines;
@@ -39,7 +39,7 @@ int	map_lines(char *mapfile)
 	lines = 0;
 	fd = open(mapfile, O_RDONLY);
 	if (fd < 0)
-		exit (8);
+		error_msg(game, "Could not open file.\n");
 	while (1) //infinite loop
 	{	
 		tmp = get_next_line(fd);
@@ -59,20 +59,20 @@ void	load_map(t_game *game, char *mapfile)
 	unsigned int		i;
 
 	i = 0;
-	game->map = new_map(0, map_lines(mapfile));
+	game->map = new_map(0, nr_lines(game, mapfile));
 	if (!game->map)
-		exit (9);
+		error_msg(game, "Could not allocate memory for map.\n");
 	fd = open(mapfile, O_RDONLY);
 	if (fd < 0)
-		exit (2);
+		error_msg(game, "Could not open file.\n");
 	while (i < game->map->rows)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			exit (3);
+			error_msg(game, "Could not read file.\n");
 		game->map->bytes[i] = ft_strtrim(line, "\n");
 		if (!game->map->bytes[i++])
-			exit (4);
+			error_msg(game, "Could not trim line.\n");
 		free(line);
 	}
 	close(fd);
