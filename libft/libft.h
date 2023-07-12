@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: damachad <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:06:37 by damachad          #+#    #+#             */
-/*   Updated: 2023/04/17 11:10:12 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:25:27 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
+# include <fcntl.h>
 
 /*---------------------GNL----------------------------*/
 # ifndef BUFFER_SIZE

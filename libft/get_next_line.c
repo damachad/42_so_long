@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/02 15:09:58 by damachad          #+#    #+#             */
-/*   Updated: 2023/05/19 14:13:44 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:19:02 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,3 +51,29 @@ char	*get_next_line(int fd)
 	read_lines[fd] = remain_text(read_lines[fd]);
 	return (line);
 }
+/*
+int	main(void)
+{
+	int		fd = 0;
+	char	*line = NULL;
+
+	fd = open("valid1.ber", O_RDONLY);
+	printf("fd = %d\n", fd);
+	if (fd < 0)
+	{
+		printf("Error: failed to open file\n");
+		return (1);
+	}
+	while ((line = get_next_line(fd)))
+	{
+		printf("%s", line);
+		free(line);
+	}
+	if (line == NULL)
+	{
+		printf("End fo file reached\n");
+	}
+	close(fd);
+	return (0);
+}
+*/
