@@ -6,19 +6,37 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:58:31 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/13 17:44:32 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:04:08 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+int	handle_keypress(int keysym, t_game *game)
+{
+    if (keysym == XK_Escape)
+	{
+		destroy_game(game);
+		exit(EXIT_SUCCESS);
+	}
+	else if (keysym == XK_w)
+		game->next = (t_point){game->curr.x, game->curr.y - 1};
+	else if (keysym == XK_a)
+		game->next = (t_point){game->curr.x - 1, game->curr.y};
+	else if (keysym == XK_s)
+		game->next = (t_point){game->curr.x, game->curr.y + 1};
+	else if (keysym == XK_d)
+		game->next = (t_point){game->curr.x + 1, game->curr.y};
+	return (keysym);
+}
 
 void	init_graphics(t_game *game)
 {
 	game->display.mlx = mlx_init();
 	if (!game->display.mlx)
 		error_msg(game, "mlx_init() failed\n");
-	game->display.win = mlx_new_window(game->display.mlx, game->map->columns * 64, \
-	game->map->rows * 64, "so_long"); //why 64?
+	game->display.win = mlx_new_window(game->display.mlx, game->map->columns * 32, \
+	game->map->rows * 32, "so_long"); //why 32?
 	if (!game->display.win)
 		error_msg(game, "mlx_new_window() failed\n");
 }
@@ -33,6 +51,7 @@ void	start_game(char	*mapfile)
 	init_graphics(&game);
 	load_sprites(&game);
 	render_map(&game);
+	mlx_hook(game.display.win, KeyPress, KeyPressMask, &handle_keypress, &game);
 	mlx_loop(game.display.mlx);
 }
 
