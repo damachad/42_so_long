@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/12 15:30:42 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:42:37 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,33 @@ void	load_map(t_game *game, char *mapfile)
 	map_print(game->map);
 }
 
+bool	load_components(t_game *g)
+{
+	unsigned int	row;
+	unsigned int	col;
+
+	row = -1;
+	while(++row < g->map->rows)
+	{
+		col = -1;
+		while (++col < g->map->columns)
+		{
+			if (g->map->bytes[row][col] == 'C')
+				g->map->collect++;
+			else if (g->map->bytes[row][col] == 'P')
+			{
+				g->map->players++;
+				g->curr = (t_point){col, row};
+				g->next = g->curr;
+			}
+			else if (g->map->bytes[row][col] == 'E')
+				g->map->exits++;
+			else if (!ft_strchr("01", g->map->bytes[row][col]))
+				return (false);
+		}
+	}
+	return (g->map->players == 1 && g->map->exits == 1 && g->map->collect > 0);
+}
 
 void	map_print(t_map *map)
 {
@@ -87,9 +114,10 @@ void	map_print(t_map *map)
 	i = 0;
 	printf("Length: %u\n", map->columns);
 	printf("Width: %u\n", map->rows);
-	printf("Players: %u\n", map->players);
+	printf("Collectibles: %u\n", map->collect);
 	printf("Exits: %u\n", map->exits);
-	printf("Coins: %u\n", map->collect);
+	printf("Players: %u\n", map->players);
+	printf("Bytes:\n");
 	while (i < map->rows)
 		printf("%s\n", map->bytes[i++]);
 }

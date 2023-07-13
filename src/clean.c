@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   clean.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:43:13 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/12 14:56:42 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 16:42:14 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../inc/so_long.h"
+#include "../inc/so_long.h"
 
 void	destroy_game(t_game *game)
 {
@@ -50,6 +50,7 @@ void	destroy_map(t_map *map)
 void	error_msg(t_game *game, char *msg)
 {
 	destroy_game(game);
-	perror(msg);
+	ft_putstr_fd("\nError. ", 2);
+	ft_putstr_fd(msg, 2);
 	exit(EXIT_FAILURE);
 }
