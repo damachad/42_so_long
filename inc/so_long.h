@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:19:49 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/12 15:27:10 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 17:42:31 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@
 # define HEIGHT 600
 # define COLOR 0x000000
 # define WHITE 0xFFFFFF
+
+#define FLOOR "./images/floor.xpm"
+#define WALL "./images/wall.xpm"
+#define COLLECT "./images/collect.xpm"
+#define EXIT "./images/exit.xpm"
+#define PLAYER "./images/player.xpm"
 
 typedef struct s_point
 {
@@ -74,18 +80,32 @@ typedef struct s_game
 	unsigned int	moves;
 }					t_game;
 
+/*--------------------------map--------------------------*/
 int		nr_lines(t_game *game, char *mapfile);
 void	map_print(t_map *map);
 void	load_map(t_game *game, char *mapfile);
 t_map	*new_map(unsigned int columns, unsigned int rows);
+bool	load_components(t_game *g);
 
+/*-------------------------clean-------------------------*/
 void	destroy_game(t_game *game);
 void	free_matrix(char **bytes);
 void	destroy_map(t_map *map);
 void	error_msg(t_game *game, char *msg);
 
+/*------------------------checker------------------------*/
 bool	is_rectangle(t_map *map);
 bool	is_bordered(t_map *map);
 void	validate_map(t_game *game);
+bool	exit_true(t_map *map, t_point current, char **dup_map);
+
+/*-------------------------start-------------------------*/
+void	init_graphics(t_game *game);
+void	start_game(char	*mapfile);
+void	load_sprites(t_game *game);
+
+/*-------------------------render-------------------------*/
+void	put_tile(t_game *game, t_point point);
+void	render_map(t_game *game);
 
 #endif
