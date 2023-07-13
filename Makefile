@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/07/12 14:28:13 by damachad         ###   ########.fr        #
+#    Updated: 2023/07/13 17:43:24 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ LFLAGS = -L./libft -lft -L./mlx -lmlx -lXext -lX11 -lm -lbsd
 LIBFT = libft/libft.a
 RM = rm -f
 NAME = map
-MAP_PATH = maps/valid1.ber
+MAP_PATH = maps/valid4.ber
 SRC_PATH = src
 BIN_PATH = bin
 SRC = $(wildcard $(SRC_PATH)/*.c) # write src manually
