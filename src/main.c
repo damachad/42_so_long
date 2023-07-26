@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:26:28 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/13 16:59:34 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:57:32 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+// Test nbr of arguments and mapfile extension
 
 int main(int argc, char **argv)
 {

@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:02:32 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/13 16:47:35 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/24 12:02:27 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,8 @@ bool	valid_path(t_game *game)
 	free_matrix(dup_map);
 	return (valid);
 }
+
+// Check if map is valid
 
 void	validate_map(t_game *game)
 {

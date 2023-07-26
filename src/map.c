@@ -6,11 +6,14 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/13 15:42:37 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/24 11:56:50 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+// Allocate memory for map, with nbr of rows as nbr of
+// strings in '**bytes'
 
 t_map	*new_map(unsigned int columns, unsigned int rows)
 {
@@ -29,6 +32,8 @@ t_map	*new_map(unsigned int columns, unsigned int rows)
 	map->rows = rows;
 	return (map);
 }
+
+// Count nbr of lines in mapfile
 
 int	nr_lines(t_game *game, char *mapfile)
 {
@@ -51,6 +56,9 @@ int	nr_lines(t_game *game, char *mapfile)
 	close(fd);
 	return (lines);
 }
+
+// Load map from file into '**bytes', removing the
+// '\n' at the end of each line
 
 void	load_map(t_game *game, char *mapfile)
 {
@@ -106,6 +114,8 @@ bool	load_components(t_game *g)
 	}
 	return (g->map->players == 1 && g->map->exits == 1 && g->map->collect > 0);
 }
+
+// Print map components
 
 void	map_print(t_map *map)
 {

@@ -6,11 +6,13 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:13:08 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/13 17:33:10 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/26 15:10:09 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/so_long.h"
+
+// Render graphics according to map
 
 void	put_tile(t_game *game, t_point point)
 {
@@ -24,10 +26,9 @@ void	put_tile(t_game *game, t_point point)
 		sprite = game->sprites[3];
 	else if (game->map->bytes[point.y][point.x] == 'P')
 		sprite = game->sprites[4];
-	else
+	else if (game->map->bytes[point.y][point.x] == '0')
 		sprite = game->sprites[0];
-	mlx_put_image_to_window(game->display.mlx, game->display.win, \
-	sprite.img, point.x * sprite.width, point.y * sprite.height);
+	mlx_put_image_to_window(game->display.mlx, game->display.win, sprite.img, point.x * sprite.width, point.y * sprite.height);
 }
 
 void	render_map(t_game *game)
@@ -46,4 +47,19 @@ void	render_map(t_game *game)
 		}
 		y++;
 	}
+}
+
+int	render_frame(t_game *game)
+{
+	if (!is_valid_movement(game))
+		return (0);
+	ft_putstr_fd("Number of movements: ", STDOUT_FILENO);
+	ft_putnbr_fd(++game->moves, STDOUT_FILENO);
+	ft_putchar_fd('\n', STDOUT_FILENO);
+	if (at(game, game->next) == 'C')
+		game->collect++;
+	else if (at(game, game->next) == 'E' && game->collect == game->map->collect)
+		quit_prog(game);
+	move_player(game);
+	return (0);
 }
