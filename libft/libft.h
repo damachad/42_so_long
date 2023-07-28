@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 11:06:37 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/12 14:25:27 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/13 14:44:30 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ int		ft_put_add(unsigned long int n);
 int		ft_printf(const char *str, ...);
 int		ft_putnbr_unsig(unsigned int nb);
 int		ft_convert(char format, va_list args);
-/*---------------------LIBFT----------------------------*/
+
+/*-------------------------LIBFT-------------------------------*/
 typedef struct s_list
 {
 	void			*content;
