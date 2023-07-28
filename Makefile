@@ -66,8 +66,6 @@ fclean: clean
 
 re: fclean all
 
-# valgrind --leak-check=full -s --show-leak-kinds=all 
-# "$(MAP_PATH)"
 test: re
 	@./$(NAME) "$(MAP)"
 
