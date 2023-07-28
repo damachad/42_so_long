@@ -6,11 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:13:11 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/26 14:21:21 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/28 12:14:34 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 char	at(t_game *g, t_point p)
 {
@@ -24,7 +24,13 @@ bool	is_same_point(t_point p1, t_point p2)
 
 bool	is_valid_movement(t_game *g)
 {
-	return (!is_same_point(g->curr, g->next) && at(g, g->next) != '1');
+	bool is_valid;
+
+	if (at(g, g->next) != '1')
+		is_valid = true;
+	if (g->can_exit == false && at(g, g->next) == 'E')
+		is_valid = false;
+	return (!is_same_point(g->curr, g->next) && is_valid);
 }
 
 void	move_player(t_game *g)

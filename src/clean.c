@@ -6,11 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:43:13 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/25 11:39:52 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:20:44 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 void	destroy_game(t_game *game)
 {

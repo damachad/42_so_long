@@ -6,11 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:02:32 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/24 12:02:27 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:24:36 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 bool	is_rectangle(t_map *map)
 {
@@ -105,5 +105,4 @@ void	validate_map(t_game *game)
 	 	error_msg(game, "Map has invalid number of components.\n");
 	if (!valid_path(game))
 	 	error_msg(game, "Map has no viable path to all 'C's and/or to the exit.\n");
-	map_print(game->map);
 }

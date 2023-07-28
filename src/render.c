@@ -6,11 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:13:08 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/26 15:10:09 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/28 12:33:47 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 // Render graphics according to map
 
@@ -31,6 +31,8 @@ void	put_tile(t_game *game, t_point point)
 	mlx_put_image_to_window(game->display.mlx, game->display.win, sprite.img, point.x * sprite.width, point.y * sprite.height);
 }
 
+// Run over map and render each tile, using the put_tile function
+
 void	render_map(t_game *game)
 {
 	unsigned int	x;
@@ -49,6 +51,9 @@ void	render_map(t_game *game)
 	}
 }
 
+// Render the frame, update nbr of movements and collectibles 
+// and check if the game is over
+
 int	render_frame(t_game *game)
 {
 	if (!is_valid_movement(game))
@@ -57,8 +62,12 @@ int	render_frame(t_game *game)
 	ft_putnbr_fd(++game->moves, STDOUT_FILENO);
 	ft_putchar_fd('\n', STDOUT_FILENO);
 	if (at(game, game->next) == 'C')
+	{
 		game->collect++;
-	else if (at(game, game->next) == 'E' && game->collect == game->map->collect)
+		if (game->collect == game->map->collect)
+			game->can_exit = true;
+	}
+	else if (at(game, game->next) == 'E' && game->can_exit == true)
 		quit_prog(game);
 	move_player(game);
 	return (0);

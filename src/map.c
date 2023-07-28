@@ -6,11 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/24 11:56:50 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/26 17:21:09 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/so_long.h"
+#include "../includes/so_long.h"
 
 // Allocate memory for map, with nbr of rows as nbr of
 // strings in '**bytes'
@@ -84,7 +84,6 @@ void	load_map(t_game *game, char *mapfile)
 		free(line);
 	}
 	close(fd);
-	map_print(game->map);
 }
 
 bool	load_components(t_game *g)
@@ -114,7 +113,7 @@ bool	load_components(t_game *g)
 	}
 	return (g->map->players == 1 && g->map->exits == 1 && g->map->collect > 0);
 }
-
+/*
 // Print map components
 
 void	map_print(t_map *map)
@@ -131,3 +130,4 @@ void	map_print(t_map *map)
 	while (i < map->rows)
 		printf("%s\n", map->bytes[i++]);
 }
+*/
