@@ -29,11 +29,6 @@ int	ft_putnbr_unsig(unsigned int nb)
 	int	count;
 
 	count = 0;
-	if (nb < 0)
-	{
-		count = ft_putchar_2('-');
-		nb *= -1;
-	}
 	ft_printnumb(nb, &count);
 	return (count);
 }
