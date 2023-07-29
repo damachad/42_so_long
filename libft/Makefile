@@ -20,6 +20,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ PATHS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 OBJ_DIR = objs
+INC 	= ../includes
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ FILES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 NAME = libft.a
@@ -56,7 +57,7 @@ $(OBJ_DIR):
 	@echo "libft objs directory created"
 
 $(OBJ_DIR)/%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -I libft.h
+	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
 
 clean:
 	@$(RM) $(OBJ_DIR)
