@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:13:08 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 13:05:53 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:36:08 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,22 @@
 // Render graphics according to map
 // Put image according to nbr of pixels in tile
 
-void	put_tile(t_game *game, t_point point)
+void	put_tile(t_game *g, t_point p)
 {
-	t_sprite	sprite;
+	t_sprite	sp;
 
-	if (game->map->bytes[point.y][point.x] == '1')
-		sprite = game->sprites[1];
-	else if (game->map->bytes[point.y][point.x] == 'C')
-		sprite = game->sprites[2];
-	else if (game->map->bytes[point.y][point.x] == 'E')
-		sprite = game->sprites[3];
-	else if (game->map->bytes[point.y][point.x] == 'P')
-		sprite = game->sprites[4];
-	else if (game->map->bytes[point.y][point.x] == '0')
-		sprite = game->sprites[0];
-	mlx_put_image_to_window(game->display.mlx, game->display.win, sprite.img, point.x * sprite.width, point.y * sprite.height);
+	if (g->map->bytes[p.y][p.x] == '1')
+		sp = g->sprites[1];
+	else if (g->map->bytes[p.y][p.x] == 'C')
+		sp = g->sprites[2];
+	else if (g->map->bytes[p.y][p.x] == 'E')
+		sp = g->sprites[3];
+	else if (g->map->bytes[p.y][p.x] == 'P')
+		sp = g->sprites[4];
+	else if (g->map->bytes[p.y][p.x] == '0')
+		sp = g->sprites[0];
+	mlx_put_image_to_window(g->mlx, g->win, sp.img, \
+	p.x * sp.width, p.y * sp.height);
 }
 
 // Run over map and render each tile, using the put_tile function
@@ -62,13 +63,13 @@ int	render_frame(t_game *game)
 	ft_putstr_fd("Movement counter: ", 1);
 	ft_putnbr_fd(++game->moves, 1);
 	ft_putchar_fd('\n', 1);
-	if (at(game, game->next) == 'C')
+	if (entity_at(game, game->next) == 'C')
 	{
-		game->collect++;
-		if (game->collect == game->map->collect)
+		game->collected++;
+		if (game->collected == game->map->collect)
 			game->can_exit = true;
 	}
-	else if (at(game, game->next) == 'E' && game->can_exit == true)
+	else if (entity_at(game, game->next) == 'E' && game->can_exit == true)
 		quit_prog(game);
 	move_player(game);
 	return (0);

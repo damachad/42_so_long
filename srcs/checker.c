@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:02:32 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 14:12:15 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:55:52 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,7 +105,7 @@ void	validate_map(t_game *game)
 	if (!is_bordered(game->map))
 		error_msg(game, "Map is not completely surrounded by walls.\n");
 	if (!load_components(game))
-	 	error_msg(game, "Map has invalid number of components.\n");
+		error_msg(game, "Map has invalid number of components.\n");
 	if (!valid_path(game))
-	 	error_msg(game, "Map has no viable path to all 'C's and/or to the exit.\n");
+		error_msg(game, "Map: no viable path to all 'C's and/or to the exit.\n");
 }

@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 12:40:55 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:57:03 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,8 +45,8 @@ int	nr_lines(t_game *game, char *mapfile)
 	fd = open(mapfile, O_RDONLY);
 	if (fd < 0)
 		error_msg(game, "Could not open file.\n");
-	while (1) //infinite loop
-	{	
+	while (1)
+	{
 		tmp = get_next_line(fd);
 		if (!tmp)
 			break ;
@@ -95,7 +95,7 @@ bool	load_components(t_game *g)
 	unsigned int	col;
 
 	row = -1;
-	while(++row < g->map->rows)
+	while (++row < g->map->rows)
 	{
 		col = -1;
 		while (++col < g->map->columns)

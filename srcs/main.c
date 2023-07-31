@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 11:26:28 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/26 17:21:03 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 15:49:17 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 // Test nbr of arguments and mapfile extension
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	if (argc != 2)
 		error_msg(NULL, "Usage: ./so_long <mapfile>\n");

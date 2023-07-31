@@ -6,15 +6,15 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:13:11 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/28 12:14:34 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:49:04 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-char	at(t_game *g, t_point p)
+char	entity_at(t_game *game, t_point point)
 {
-	return (g->map->bytes[p.y][p.x]);
+	return (game->map->bytes[point.y][point.x]);
 }
 
 bool	is_same_point(t_point p1, t_point p2)
@@ -22,15 +22,16 @@ bool	is_same_point(t_point p1, t_point p2)
 	return (p1.x == p2.x && p1.y == p2.y);
 }
 
-bool	is_valid_movement(t_game *g)
+bool	is_valid_movement(t_game *game)
 {
-	bool is_valid;
+	bool	is_valid;
 
-	if (at(g, g->next) != '1')
+	is_valid = false;
+	if (entity_at(game, game->next) != '1')
 		is_valid = true;
-	if (g->can_exit == false && at(g, g->next) == 'E')
+	if (game->can_exit == false && entity_at(game, game->next) == 'E')
 		is_valid = false;
-	return (!is_same_point(g->curr, g->next) && is_valid);
+	return (!is_same_point(game->curr, game->next) && is_valid);
 }
 
 void	move_player(t_game *g)
@@ -38,7 +39,7 @@ void	move_player(t_game *g)
 	static char	previous = '0';
 
 	g->map->bytes[g->curr.y][g->curr.x] = previous;
-	if (at(g, g->next) != 'C')
+	if (entity_at(g, g->next) != 'C')
 		previous = g->map->bytes[g->next.y][g->next.x];
 	else
 		previous = '0';
