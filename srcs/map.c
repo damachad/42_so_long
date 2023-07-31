@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/26 17:21:09 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:40:55 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,9 @@ void	load_map(t_game *game, char *mapfile)
 	}
 	close(fd);
 }
+
+// Check nbr of entities, load them into 't_map' struct and 
+// set beginning position of player
 
 bool	load_components(t_game *g)
 {

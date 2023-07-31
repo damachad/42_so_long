@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:43:13 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/26 17:20:44 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:37:12 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,12 @@ void	destroy_map(t_map *map)
 	free(map);
 }
 
+// Print error message
+
 void	error_msg(t_game *game, char *msg)
 {
 	destroy_game(game);
-	ft_putstr_fd("\nError. ", 2);
+	ft_putstr_fd("Error\n", 2);
 	ft_putstr_fd(msg, 2);
 	exit(EXIT_FAILURE);
 }

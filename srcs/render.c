@@ -6,13 +6,14 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:13:08 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/28 12:33:47 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 13:05:53 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
 // Render graphics according to map
+// Put image according to nbr of pixels in tile
 
 void	put_tile(t_game *game, t_point point)
 {
@@ -58,9 +59,9 @@ int	render_frame(t_game *game)
 {
 	if (!is_valid_movement(game))
 		return (0);
-	ft_putstr_fd("Number of movements: ", STDOUT_FILENO);
-	ft_putnbr_fd(++game->moves, STDOUT_FILENO);
-	ft_putchar_fd('\n', STDOUT_FILENO);
+	ft_putstr_fd("Movement counter: ", 1);
+	ft_putnbr_fd(++game->moves, 1);
+	ft_putchar_fd('\n', 1);
 	if (at(game, game->next) == 'C')
 	{
 		game->collect++;

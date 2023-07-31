@@ -6,19 +6,19 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:58:31 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/28 12:04:31 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 12:20:20 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-// Handle keypresses, and exit if 'ESC' is pressed (events)
 
 int	quit_prog(t_game *game)
 {
 	destroy_game(game);
 	exit(EXIT_SUCCESS);
 }
+
+// Handle keypresses, and exit if 'ESC' is pressed (events)
 
 int	handle_keypress(int keysym, t_game *game)
 {
@@ -36,6 +36,7 @@ int	handle_keypress(int keysym, t_game *game)
 }
 
 // Initialize graphics using mlx_init() and mlx_new_window()
+// 32 is the size of the sprites (tiles)
 
 void	init_graphics(t_game *game)
 {
@@ -43,7 +44,7 @@ void	init_graphics(t_game *game)
 	if (!game->display.mlx)
 		error_msg(game, "mlx_init() failed\n");
 	game->display.win = mlx_new_window(game->display.mlx, game->map->columns * 32, \
-	game->map->rows * 32, "so_long"); //32 is the size of the sprites
+	game->map->rows * 32, "so_long");
 	if (!game->display.win)
 		error_msg(game, "mlx_new_window() failed\n");
 }

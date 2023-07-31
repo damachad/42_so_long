@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 15:02:32 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/26 17:24:36 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 14:12:15 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,10 @@ bool	exit_true(t_map *map, t_point current, char **dup_map)
 	else if (dup_map[current.y][current.x] == 'C')
 		collectibles++;
 	else if (dup_map[current.y][current.x] == 'E')
+	{
 		found_exit = true;
+		return (false);
+	}
 	dup_map[current.y][current.x] = '1';
 	exit_true(map, (t_point){current.x + 1, current.y}, dup_map);
 	exit_true(map, (t_point){current.x - 1, current.y}, dup_map);
