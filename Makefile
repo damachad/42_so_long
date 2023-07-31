@@ -6,7 +6,7 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/07/27 11:15:39 by damachad         ###   ########.fr        #
+#    Updated: 2023/07/31 14:12:53 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,13 +25,13 @@ SRC_DIR		= srcs
 OBJ_DIR		= objs
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ FILES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
-NAME 	= so_long
-LIBFT	= libft/libft.a
-MLX		= mlx/libmlx.a
-MAP		= maps/valid1.ber
-FILES 	= checker clean main map move render init
-SRC 	= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
-OBJ 	= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
+NAME 		= so_long
+LIBFT		= libft/libft.a
+MLX			= mlx/libmlx.a
+MAP			= maps/valid1.ber
+FILES 		= checker clean main map move render init
+SRC 		= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
+OBJ 		= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ RULES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 all: $(NAME)
@@ -66,11 +66,11 @@ fclean: clean
 
 re: fclean all
 
+# valgrind --leak-check=full -s --show-leak-kinds=all --track-origins=yes
+
 test: re
 	@./$(NAME) "$(MAP)"
 
-debug: re
-	@$(CC) -g $(SRC) $(LFLAGS) -o $(NAME)
-	@gdb --args $(NAME) "$(MAP_PATH)"
-
 .PHONY: all clean fclean re test
+
+.SILENT:
