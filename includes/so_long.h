@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:19:49 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/28 12:02:29 by damachad         ###   ########.fr       */
+/*   Updated: 2023/07/31 16:08:06 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,27 +51,15 @@ typedef struct s_sprite{
 	int		height;
 }			t_sprite;
 
-typedef struct s_graphs
-{
-	void	*mlx;
-	void	*win;
-	void	*img;
-	char	*addr;
-	int		width;
-	int		height;
-	int		bpp;
-	int		line_len;
-	int		endian;
-}			t_graphs;
-
 typedef struct s_game
 {
+	void			*mlx;
+	void			*win;
 	t_map			*map;	
 	t_point			curr;
 	t_point			next;
-	t_graphs			display;
 	t_sprite		*sprites;
-	unsigned int	collect;
+	unsigned int	collected;
 	unsigned int	moves;
 	bool			can_exit;
 }					t_game;
@@ -87,7 +75,7 @@ void	destroy_game(t_game *game);
 void	free_matrix(char **bytes);
 void	destroy_map(t_map *map);
 void	error_msg(t_game *game, char *msg);
-void	destroy_sprites(t_game *g);
+void	destroy_sprites(t_game *game);
 
 /*------------------------checker------------------------*/
 bool	is_rectangle(t_map *map);
@@ -103,14 +91,14 @@ int	handle_keypress(int keysym, t_game *game);
 int	quit_prog(t_game *game);
 
 /*-------------------------render-------------------------*/
-void	put_tile(t_game *game, t_point point);
+void	put_tile(t_game *g, t_point p);
 void	render_map(t_game *game);
 int		render_frame(t_game *game);
 
 /*--------------------------move--------------------------*/
-char	at(t_game *g, t_point p);
+char	entity_at(t_game *game, t_point point);
 bool	is_same_point(t_point p1, t_point p2);
-bool	is_valid_movement(t_game *g);
+bool	is_valid_movement(t_game *game);
 void	move_player(t_game *g);
 
 #endif
