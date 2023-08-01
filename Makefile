@@ -20,7 +20,7 @@ MK_FLAG = --no-print-directory
 LFLAGS 	= -L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ PATHS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
-INC			= includes
+INC		= includes
 SRC_DIR		= srcs
 OBJ_DIR		= objs
 MAP_DIR		= maps
@@ -28,8 +28,8 @@ MAP_DIR		= maps
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ FILES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 NAME 		= so_long
 LIBFT		= libft/libft.a
-MLX			= mlx/libmlx.a
-MAP			= screen.ber
+MLX		= mlx/libmlx.a
+MAP		= screen.ber
 FILES 		= checker clean main map move render init
 SRC 		= $(addprefix $(SRC_DIR)/, $(addsuffix .c, $(FILES)))
 OBJ 		= $(addprefix $(OBJ_DIR)/, $(addsuffix .o, $(FILES)))
