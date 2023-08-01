@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/05 09:16:28 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/12 14:18:26 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/01 14:25:23 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,7 +76,7 @@ char	*remain_text(char *text)
 	j = 0;
 	while (text[i] != '\0' && text[i] != '\n')
 		i++;
-	if (text[i] == '\0')
+	if (text[i] == '\0' || text[i + 1] == '\0')
 	{
 		free(text);
 		return (NULL);
