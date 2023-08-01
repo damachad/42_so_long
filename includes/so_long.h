@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:19:49 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 16:08:06 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/01 10:44:52 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,10 +71,10 @@ t_map	*new_map(unsigned int columns, unsigned int rows);
 bool	load_components(t_game *g);
 
 /*-------------------------clean-------------------------*/
+int		quit_prog(t_game *game);
 void	destroy_game(t_game *game);
 void	free_matrix(char **bytes);
 void	destroy_map(t_map *map);
-void	error_msg(t_game *game, char *msg);
 void	destroy_sprites(t_game *game);
 
 /*------------------------checker------------------------*/
@@ -83,19 +83,20 @@ bool	is_bordered(t_map *map);
 void	validate_map(t_game *game);
 bool	exit_true(t_map *map, t_point current, char **dup_map);
 
-/*-------------------------start-------------------------*/
+/*-------------------------init-------------------------*/
 void	init_graphics(t_game *game);
 void	start_game(char	*mapfile);
 void	load_sprites(t_game *game);
-int	handle_keypress(int keysym, t_game *game);
-int	quit_prog(t_game *game);
+
 
 /*-------------------------render-------------------------*/
+void	error_msg(t_game *game, char *msg);
 void	put_tile(t_game *g, t_point p);
 void	render_map(t_game *game);
 int		render_frame(t_game *game);
 
 /*--------------------------move--------------------------*/
+int		handle_keypress(int keysym, t_game *game);
 char	entity_at(t_game *game, t_point point);
 bool	is_same_point(t_point p1, t_point p2);
 bool	is_valid_movement(t_game *game);
