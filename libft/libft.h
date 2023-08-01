@@ -15,6 +15,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdarg.h>
 
 /*---------------------GNL----------------------------*/
 # ifndef BUFFER_SIZE
@@ -28,7 +29,6 @@ char	*ft_get_line(char *text);
 char	*ft_strjoin_2(char *s1, char *s2);
 char	*read_from(int fd, char *read_text);
 /*---------------------FT_PRINTF----------------------------*/
-# include <stdarg.h>
 
 int		ft_putchar_2(char c);
 int		ft_putstr_2(char *s);
