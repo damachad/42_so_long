@@ -23,11 +23,11 @@
 # include <sys/stat.h>
 # include <stdbool.h>
 
-#define FLOOR "images/floor.xpm"
-#define WALL "images/wall.xpm"
-#define COLLECT "images/collect.xpm"
-#define EXIT "images/exit.xpm"
-#define PLAYER "images/player.xpm"
+# define FLOOR "images/floor.xpm"
+# define WALL "images/wall.xpm"
+# define COLLECT "images/collect.xpm"
+# define EXIT "images/exit.xpm"
+# define PLAYER "images/player.xpm"
 
 typedef struct s_point
 {
