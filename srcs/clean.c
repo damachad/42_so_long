@@ -6,11 +6,20 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 14:43:13 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 16:03:50 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:10:19 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+// Calls function to free resources and exits program
+// Called when game is over
+
+int	quit_prog(t_game *game)
+{
+	destroy_game(game);
+	exit(EXIT_SUCCESS);
+}
 
 void	free_matrix(char **bytes)
 {
@@ -44,6 +53,8 @@ void	destroy_map(t_map *map)
 	free(map);
 }
 
+// Free all used resources
+
 void	destroy_game(t_game *game)
 {
 	if (!game)
@@ -57,14 +68,4 @@ void	destroy_game(t_game *game)
 	if (game->mlx)
 		mlx_destroy_display(game->mlx);
 	free(game->mlx);
-}
-
-// Print error message
-
-void	error_msg(t_game *game, char *msg)
-{
-	destroy_game(game);
-	ft_putstr_fd("Error\n", 2);
-	ft_putstr_fd(msg, 2);
-	exit(1);
 }

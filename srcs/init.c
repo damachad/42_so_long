@@ -6,34 +6,11 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 13:58:31 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 15:52:42 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/01 10:39:37 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-int	quit_prog(t_game *game)
-{
-	destroy_game(game);
-	exit(EXIT_SUCCESS);
-}
-
-// Handle keypresses, and exit if 'ESC' is pressed (events)
-
-int	handle_keypress(int keysym, t_game *game)
-{
-	if (keysym == XK_Escape)
-		quit_prog(game);
-	else if (keysym == XK_w)
-		game->next = (t_point){game->curr.x, game->curr.y - 1};
-	else if (keysym == XK_a)
-		game->next = (t_point){game->curr.x - 1, game->curr.y};
-	else if (keysym == XK_s)
-		game->next = (t_point){game->curr.x, game->curr.y + 1};
-	else if (keysym == XK_d)
-		game->next = (t_point){game->curr.x + 1, game->curr.y};
-	return (keysym);
-}
 
 // Initialize graphics using mlx_init() and mlx_new_window()
 // 32 is the size of the sprites (tiles)

@@ -6,11 +6,21 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:13:08 by damachad          #+#    #+#             */
-/*   Updated: 2023/07/31 16:36:08 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/01 11:09:18 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+// Print error message
+
+void	error_msg(t_game *game, char *msg)
+{
+	destroy_game(game);
+	ft_putstr_fd("Error\n", 2);
+	ft_putstr_fd(msg, 2);
+	exit(EXIT_FAILURE);
+}
 
 // Render graphics according to map
 // Put image according to nbr of pixels in tile
@@ -69,7 +79,7 @@ int	render_frame(t_game *game)
 		if (game->collected == game->map->collect)
 			game->can_exit = true;
 	}
-	else if (entity_at(game, game->next) == 'E' && game->can_exit == true)
+	if (entity_at(game, game->next) == 'E' && game->can_exit == true)
 		quit_prog(game);
 	move_player(game);
 	return (0);
