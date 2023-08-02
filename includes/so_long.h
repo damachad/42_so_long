@@ -6,14 +6,14 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:19:49 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/01 10:44:52 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:09:12 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "mlx.h"
+# include "../mlx/mlx.h"
 # include "libft.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
@@ -65,9 +65,10 @@ typedef struct s_game
 }					t_game;
 
 /*--------------------------map--------------------------*/
+t_map	*new_map(unsigned int columns, unsigned int rows);
 int		nr_lines(t_game *game, char *mapfile);
 void	load_map(t_game *game, char *mapfile);
-t_map	*new_map(unsigned int columns, unsigned int rows);
+void	assign_entities(t_game *g, char entity);
 bool	load_components(t_game *g);
 
 /*-------------------------clean-------------------------*/
@@ -87,7 +88,6 @@ bool	exit_true(t_map *map, t_point current, char **dup_map);
 void	init_graphics(t_game *game);
 void	start_game(char	*mapfile);
 void	load_sprites(t_game *game);
-
 
 /*-------------------------render-------------------------*/
 void	error_msg(t_game *game, char *msg);

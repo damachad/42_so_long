@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/06 12:19:49 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/01 15:48:20 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/02 14:55:57 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,9 +68,10 @@ typedef struct s_game
 }					t_game;
 
 /*--------------------------map--------------------------*/
+t_map	*new_map(unsigned int columns, unsigned int rows);
 int		nr_lines(t_game *game, char *mapfile);
 void	load_map(t_game *game, char *mapfile);
-t_map	*new_map(unsigned int columns, unsigned int rows);
+void	assign_entities(t_game *g, char entity);
 bool	load_components(t_game *g);
 
 /*-------------------------clean-------------------------*/
