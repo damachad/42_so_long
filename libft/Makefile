@@ -6,9 +6,20 @@
 #    By: damachad <damachad@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/17 10:57:36 by damachad          #+#    #+#              #
-#    Updated: 2023/07/26 17:04:13 by damachad         ###   ########.fr        #
+#    Updated: 2023/08/02 12:32:10 by damachad         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
+
+# /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ COLORS /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
+RESET	= \033[0m
+BLACK 	= \033[1;30m
+RED 	= \033[1;31m
+GREEN 	= \033[1;32m
+YELLOW 	= \033[1;33m
+BLUE	= \033[1;34m
+PURPLE 	= \033[1;35m
+CYAN 	= \033[1;36m
+WHITE 	= \033[1;37m
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ COMMANDS /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 CC = cc
@@ -20,7 +31,6 @@ CFLAGS = -Wall -Werror -Wextra
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ PATHS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 OBJ_DIR = objs
-INC 	= ../includes
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ FILES _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 NAME = libft.a
@@ -50,22 +60,22 @@ all: $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ)
 	@$(AR) $(NAME) $(OBJ)
-	@echo "libft.a created"
+	@echo "[$(GREEN)libft.a created$(RESET)]"
 
 $(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	@echo "libft objs directory created"
+	@echo "[$(GREEN)libft objs directory created$(RESET)]"
 
 $(OBJ_DIR)/%.o: %.c
-	@$(CC) $(CFLAGS) -c $< -o $@ -I $(INC)
+	@$(CC) $(CFLAGS) -c $< -o $@ -I libft.h
 
 clean:
 	@$(RM) $(OBJ_DIR)
-	@echo "libft objs removed"
+	@echo "[$(RED)libft objs removed$(RESET)]"
 
 fclean: clean
 	@$(RM) $(NAME)
-	@echo "libft.a removed"
+	@echo "[$(RED)libft.a removed$(RESET)]"
 
 re: fclean all
 
