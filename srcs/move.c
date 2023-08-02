@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/26 14:13:11 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/01 11:06:37 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:03:25 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ bool	is_valid_movement(t_game *game)
 	is_valid = false;
 	if (entity_at(game, game->next) != '1')
 		is_valid = true;
-	if (game->can_exit == false && entity_at(game, game->next) == 'E')
+	if (entity_at(game, game->next) == 'E' && game->can_exit == false)
 		is_valid = false;
 	return (!is_same_point(game->curr, game->next) && is_valid);
 }
