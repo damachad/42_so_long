@@ -32,7 +32,7 @@ LFLAGS 	= -L ./libft -lft -L ./mlx -lmlx -lXext -lX11 -lm -lbsd
 
 # /\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_ PATHS _/\_/\_/\_/\_/\_/\_/\_/\_/\_/\_/\ #
 INC			= includes
-MAP_DIR		= maps/invalid
+MAP_DIR		= maps
 SRC_DIR		= srcs
 OBJ_DIR		= objs
 SRC_BNS_DIR	= srcs_bonus
@@ -43,7 +43,7 @@ NAME 		= so_long
 NAME_BNS	= so_long_bonus
 LIBFT		= libft/libft.a
 MLX			= mlx/libmlx.a
-MAP			= no_collect.ber
+MAP			= valid2.ber
 FILES 		= checker clean main map move render init
 FILES_BNS 	= checker_bonus clean_bonus main_bonus map_bonus move_bonus \
 			render_bonus init_bonus
