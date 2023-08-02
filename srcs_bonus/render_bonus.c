@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:13:08 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/01 15:50:21 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/02 16:56:01 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,12 +83,12 @@ int	render_frame(t_game *g)
 	}
 	if (entity_at(g, g->next) == 'E' && g->can_exit == true)
 	{
-		ft_putstr_fd("\nYou Won!\n\n", 1);
+		ft_putstr_fd("\n\033[1;32mYou Won!\033[0m\n\n", 1);
 		quit_prog(g);
 	}
 	if (entity_at(g, g->next) == 'H')
 	{
-		ft_putstr_fd("\nGame Over!\n\n", 1);
+		ft_putstr_fd("\n\033[1;31mGame Over!\033[0m\n\n", 1);
 		quit_prog(g);
 	}
 	move_player(g);
