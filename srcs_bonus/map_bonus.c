@@ -6,7 +6,7 @@
 /*   By: damachad <damachad@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 14:31:17 by damachad          #+#    #+#             */
-/*   Updated: 2023/08/01 14:59:54 by damachad         ###   ########.fr       */
+/*   Updated: 2023/08/02 15:15:17 by damachad         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,12 @@ void	load_map(t_game *game, char *mapfile)
 		error_msg(game, "Could not allocate memory for map.\n");
 	fd = open(mapfile, O_RDONLY);
 	if (fd < 0)
-		error_msg(game, "Could not open file.\n");
+		error_msg(game, "Could not open map file.\n");
 	while (i < game->map->rows)
 	{
 		line = get_next_line(fd);
 		if (!line)
-			error_msg(game, "Could not read file.\n");
+			error_msg(game, "Could not read map file.\n");
 		game->map->bytes[i] = ft_strtrim(line, "\n");
 		if (!game->map->bytes[i++])
 			error_msg(game, "Could not trim line.\n");
@@ -86,51 +86,42 @@ void	load_map(t_game *game, char *mapfile)
 	close(fd);
 }
 
-// Check nbr of entities, load them into 't_map' struct and 
-// set beginning position of player
+// Load nbr of each entity to map struct
+
+void	assign_entities(t_game *g, char entity)
+{
+	if (entity == 'C')
+		g->map->collect++;
+	else if (entity == 'P')
+		g->map->players++;
+	else if (entity == 'E')
+		g->map->exits++;
+}
+
+// Check valid entities and set beginning position of player
 
 bool	load_components(t_game *g)
 {
 	unsigned int	row;
 	unsigned int	col;
 
-	row = -1;
-	while (++row < g->map->rows)
+	row = 0;
+	while (row < g->map->rows)
 	{
-		col = -1;
-		while (++col < g->map->columns)
+		col = 0;
+		while (col < g->map->columns)
 		{
-			if (g->map->bytes[row][col] == 'C')
-				g->map->collect++;
-			else if (g->map->bytes[row][col] == 'P')
+			if (!ft_strchr("01CEPH", g->map->bytes[row][col]))
+				return (false);
+			assign_entities(g, g->map->bytes[row][col]);
+			if (g->map->bytes[row][col] == 'P')
 			{
-				g->map->players++;
 				g->curr = (t_point){col, row};
 				g->next = g->curr;
 			}
-			else if (g->map->bytes[row][col] == 'E')
-				g->map->exits++;
-			else if (!ft_strchr("01H", g->map->bytes[row][col]))
-				return (false);
+			col++;
 		}
+		row++;
 	}
 	return (g->map->players == 1 && g->map->exits == 1 && g->map->collect > 0);
 }
-/*
-// Print map components
-
-void	map_print(t_map *map)
-{
-	unsigned int	i;
-
-	i = 0;
-	printf("Length: %u\n", map->columns);
-	printf("Width: %u\n", map->rows);
-	printf("Collectibles: %u\n", map->collect);
-	printf("Exits: %u\n", map->exits);
-	printf("Players: %u\n", map->players);
-	printf("Bytes:\n");
-	while (i < map->rows)
-		printf("%s\n", map->bytes[i++]);
-}
-*/
