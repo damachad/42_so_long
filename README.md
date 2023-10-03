@@ -66,6 +66,7 @@ Run:
    make bonus
     ./so_long_bonus maps/bonus/<map>.ber
 ```
+⚠️ If you want to use make clean, you need to give execution permission to the configure file in mlx.   
 Sample from the game:   
 
 ![Sample from so_long](https://github.com/damachad/so_long/assets/128734978/dcf4ebec-8b58-4dc0-92b0-e0c89446f56f)
