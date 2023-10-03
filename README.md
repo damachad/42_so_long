@@ -51,7 +51,7 @@ The project directory is organized as follows:
 - 'mlx/': Contains the MiniLibX library for graphical management.
 
 ## Controls 🎮
-Use the arrow keys to move the player character.
+Use the WASD keys to move the player character.
 Collect all collectibles on the map.
 Reach the exit to complete the level.
 
