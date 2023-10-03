@@ -2,7 +2,7 @@
 
 ## Introduction :rocket:
 
-This project was developed as part of the 42 school curriculum, focusing on game development in 2D. The goal is to create a small game where the player has to collect all the collectibles on a map and then reach the exit. The game utilizes the MiniLibX library for graphical management, enabling rendering, sprites, animations, and more.
+This project was developed as part of the 42 school curriculum, focusing on game development in 2D. The goal is to create a small game where the player has to collect all the collectibles on a map and then reach the exit. The bonus part adds enemies to avoid. The game utilizes the MiniLibX library for graphical management, enabling rendering, sprites, animations, and more.
 
 ## Project Overview :paintbrush:
 
@@ -59,6 +59,13 @@ Reach the exit to complete the level.
 This project was completed as part of the curriculum at 42 school.
 Happy coding, and have fun creating your game!
 
+## Notes 📝
+Only the bonus has enemy sprites.   
+Run:
+```sh
+   make bonus
+    ./so_long_bonus maps/bonus/<map>.ber
+```
 Sample from the game:   
 
 ![Sample from so_long](https://github.com/damachad/so_long/assets/128734978/dcf4ebec-8b58-4dc0-92b0-e0c89446f56f)
